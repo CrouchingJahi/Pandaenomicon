@@ -1,0 +1,31 @@
+<template>
+  <ul>
+    <li v-for="link in links">
+      <router-link :to="link.href">{{ link.name }}</router-link>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: 'HomePage',
+  data () {
+    return {
+      links: [
+        {
+          name: 'Attendance',
+          href: '/attendance'
+        },
+        {
+          name: 'Chores',
+          href: '/chorechart'
+        },
+        {
+          name: 'Meal Plan',
+          href: '/mealplan'
+        }
+      ]
+    }
+  }
+}
+</script>
