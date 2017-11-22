@@ -17,11 +17,11 @@ To use these functions, you must create a file in the functions folder named `co
 that contains which Google sheets to reference. Make sure your sheets are formatted correctly, because I'm not accounting for cases where they're not.
 
 Configuration Keys:
-| key       | value |
-| --------- | ----- |
-| apiKey    | Your API key from Google APIs |
-| mainSheet | The ID of your main spreadsheet in Google Sheets |
-| foodSheet | The ID of your food info spreadsheet in Google Sheets |
+key       | value
+--------- | -----
+apiKey    | Your API key from Google APIs
+mainSheet | The ID of your main spreadsheet in Google Sheets
+foodSheet | The ID of your food info spreadsheet in Google Sheets
 
 Example:
 If your main sheet is at `https://docs.google.com/spreadsheets/d/foo` and your food sheet is at `https://docs.google.com/spreadsheets/d/bar`, your configuration will look like:
