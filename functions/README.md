@@ -51,7 +51,17 @@ The goal is to expose a single endpoint that accepts a GET request and returns a
   }
   meals: {
     (key: day, value: {
-      (key: meal, value: recipe obj)
+      (key: meal, value: recipe obj{
+        chef: string,
+        meal: string,
+        ingredients: [{
+          name: (string),
+          amountPer: (string),
+          totalAmount: (string),
+          pricePer: (number),
+          totalPrice: (number)
+        }],
+      })
     })
   }
   events: {
@@ -85,10 +95,20 @@ Example file (not complete, just showing structure):
       breakfast: {
         chef: 'Weiland',
         meal: 'Fancy Stuff with Fancy Sauce',
-        (other details about a recipe obj are still being worked on)
+        ingredients: [
+          {
+            name: 'Lamb Shank',
+            amountPer: '6oz',
+            pricePer: 8,
+            totalAmount: 9lb,
+            totalPrice: 150
+          }
+        ],
+
       },
       dinner: {
-        chef: 'Brodo'
+        chef: 'Brodo',
+        meal: 'motha fuckin cinnamon rolls'
       }
     }
   }
