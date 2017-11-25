@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Pandaenomicon</h1>
+      <h1><router-link to="/">Pandaenomicon</router-link></h1>
     </header>
     <main>
       <router-view></router-view>
@@ -11,7 +11,10 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created: function () {
+    this.$store.dispatch('pullData')
+  }
 }
 </script>
 
@@ -19,6 +22,7 @@ export default {
 :root {
   --color-bg: #1B1213;
   --color-dgray: #363946;
+  --color-mgray: #3D404F;
   --color-lgray: #B9CFD4;
   --color-text: #D7DEDC;
   --color-main: #D84EBC;
@@ -46,6 +50,10 @@ header {
   border-bottom: 2px solid var(--color-lgray);
 }
 
+main {
+  padding: 1em;
+}
+
 h1 {
   font-size: 1.5em;
   font-weight: normal;
@@ -62,5 +70,29 @@ a:visited {
 a:hover {
   color: var(--color-gold);
   text-decoration: underline;
+}
+header a:visited {
+  color: var(--color-main);
+}
+table {
+  border-spacing: 0;
+}
+thead {
+  text-align: left;
+}
+tbody {
+  background-color: var(--color-dgray);
+  border-color: var(--color-lgray);
+  border-width: 2px 0;
+}
+th {
+  padding: 8px;
+  border-bottom: 2px solid var(--color-lgray);
+}
+tr:nth-child(2n) {
+  background-color: var(--color-mgray);
+}
+td {
+  padding: 8px;
 }
 </style>

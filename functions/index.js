@@ -1,3 +1,4 @@
+const cors = require('cors')
 const functions = require('firebase-functions')
 const pull = require('./pull')
 
@@ -9,7 +10,7 @@ function processRosterSheet (sheet) {
       preReg: row[2],
       campFee: row[3],
       arrival: row[4],
-      deptarture: row[5],
+      departure: row[5],
       ragVet: row[6],
       mealPlan: row[8],
       mealPlanPaid: row[9]
@@ -33,12 +34,20 @@ function processMealSheet (sheet) {
   }
 }
 
-exports.pull = functions.https.onRequest((req, res) => {
+function pullData(req, res) {
   Promise.all([pull.rosterData(),pull.mealData()]).then(([rosterSheet, mealSheet]) => {
-    let data = Object.assign({}, processRosterSheet(rosterSheet), processMealSheet(mealSheet))
-    console.log(data.attendants.length)
+    let data = {
+      lastUpdated: new Date()
+    }
+    Object.assign(data, processRosterSheet(rosterSheet), processMealSheet(mealSheet))
     res.send(data)
   }, (err) => {
     res.status(500).send(err)
+  })
+}
+
+exports.pull = functions.https.onRequest((req, res) => {
+  cors()(req, res, () => {
+    pullData(req, res)
   })
 })

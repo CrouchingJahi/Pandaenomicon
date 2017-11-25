@@ -1,9 +1,11 @@
 <template>
-  <ul>
-    <li v-for="link in links">
-      <router-link :to="link.href">{{ link.name }}</router-link>
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li v-for="link in links">
+        <router-link :to="link.href">{{ link.name }}</router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
