@@ -1,4 +1,3 @@
-const config = require('./config.json')
 const google = require('googleapis')
 
 function sheet (config) {
@@ -7,7 +6,7 @@ function sheet (config) {
       if (err) {
         console.log('err for ' + config.spreadsheetId)
         reject({
-          sheet: config.spreadsheetId == config.mainSheet ? 'main sheet' : 'food sheet',
+          sheet: config.spreadsheetId,
           err
         })
       }
@@ -18,10 +17,10 @@ function sheet (config) {
   })
 }
 
-exports.rosterData = function () {
+exports.mainData = function (config) {
   return sheet({
-    key: config.apiKey,
-    spreadsheetId: config.mainSheet,
+    key: config.apikey,
+    spreadsheetId: config.mainsheet,
     ranges: [
       'Roster 2017!A2:K',
       'Menu & Schedules!A1:I26'
@@ -29,10 +28,10 @@ exports.rosterData = function () {
   })
 }
 
-exports.mealData = function () {
+exports.mealData = function (config) {
   return sheet({
-    key: config.apiKey,
-    spreadsheetId: config.foodSheet,
+    key: config.apikey,
+    spreadsheetId: config.foodsheet,
     ranges: [
       'Pandas!A2:S',
       'sat dinner!A1:G16'

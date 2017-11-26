@@ -2,7 +2,7 @@ const cors = require('cors')
 const functions = require('firebase-functions')
 const pull = require('./pull')
 
-function processRosterSheet (sheet) {
+function processMainSheet (sheet) {
   let attendants = sheet[0].values.filter(row => !!row[0]).map(row => {
     return {
       name: row[0],
@@ -35,11 +35,12 @@ function processMealSheet (sheet) {
 }
 
 function pullData(req, res) {
-  Promise.all([pull.rosterData(),pull.mealData()]).then(([rosterSheet, mealSheet]) => {
+  let config = functions.config().gapis
+  Promise.all([pull.mainData(config),pull.mealData(config)]).then(([mainSheet, mealSheet]) => {
     let data = {
       lastUpdated: new Date()
     }
-    Object.assign(data, processRosterSheet(rosterSheet), processMealSheet(mealSheet))
+    Object.assign(data, processMainSheet(mainSheet), processMealSheet(mealSheet))
     res.send(data)
   }, (err) => {
     res.status(500).send(err)
@@ -47,7 +48,8 @@ function pullData(req, res) {
 }
 
 exports.pull = functions.https.onRequest((req, res) => {
-  cors()(req, res, () => {
-    pullData(req, res)
-  })
+  let opts = {
+    origin: functions.config().frontend.url
+  }
+  cors(opts)(req, res, () => pullData(req, res))
 })
