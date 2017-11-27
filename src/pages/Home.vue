@@ -23,6 +23,14 @@ export default {
           href: '/chorechart'
         },
         {
+          name: 'Events',
+          href: '/events'
+        },
+        {
+          name: 'Volunteer Shifts',
+          href: '/volunteers'
+        },
+        {
           name: 'Meal Plan',
           href: '/mealplan'
         }

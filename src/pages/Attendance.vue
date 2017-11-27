@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Attendants</h2>
+    <h2>Attendance</h2>
     <p>We've got {{attendants.length}} heathens.</p>
     <table>
       <thead>

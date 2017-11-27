@@ -3,6 +3,9 @@ import Router from 'vue-router'
 
 import Home from '@/pages/Home'
 import Attendance from '@/pages/Attendance'
+import ChoreChart from '@/pages/ChoreChart'
+import Events from '@/pages/Events'
+import Volunteers from '@/pages/Volunteers'
 
 Vue.use(Router)
 
@@ -17,6 +20,21 @@ export default new Router({
       path: '/attendance',
       name: 'Attendance',
       component: Attendance
+    },
+    {
+      path: '/chorechart',
+      name: 'ChoreChart',
+      component: ChoreChart
+    },
+    {
+      path: '/events',
+      name: 'Events',
+      component: Events
+    },
+    {
+      path: '/volunteers',
+      name: 'Volunteers',
+      component: Volunteers
     },
   ]
 })

@@ -74,20 +74,26 @@ a:hover {
 header a:visited {
   color: var(--color-main);
 }
+
 table {
-  border-spacing: 0;
+  border-collapse: collapse;
 }
-thead {
-  text-align: left;
+thead th {
+  border-bottom: 2px solid var(--color-lgray);
 }
-tbody {
-  background-color: var(--color-dgray);
-  border-color: var(--color-lgray);
-  border-width: 2px 0;
+.two-axis thead th:first-child {
+  border-bottom: 0;
+}
+tbody th {
+  border-right: 2px solid var(--color-lgray);
 }
 th {
+  background-color: var(--color-bg);
   padding: 8px;
-  border-bottom: 2px solid var(--color-lgray);
+  text-align: left;
+}
+tr {
+  background-color: var(--color-dgray);
 }
 tr:nth-child(2n) {
   background-color: var(--color-mgray);

@@ -33,9 +33,9 @@ If your main sheet is at `https://docs.google.com/spreadsheets/d/foo` and your f
     "url": "http://localhost:8080"
   },
   "gapis": {
-    "apikey": "googleSheetsAPIKey",
-    "mainsheet": "mainSheetUrl",
-    "foodsheet": "foodSheetUrl"
+    "apikey": "blablabla",
+    "mainsheet": "foo",
+    "foodsheet": "bar"
   }
 }
 ```
