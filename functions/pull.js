@@ -34,7 +34,20 @@ exports.mealData = function (config) {
     spreadsheetId: config.foodsheet,
     ranges: [
       'Pandas!A2:S',
-      'sat dinner!A1:G16'
+      'sat dinner!A2:G',
+      'sun breakfast!A2:G',
+      'sun dinner!A2:G',
+      'mon breakfast!A2:G',
+      'mon dinner!A2:G',
+      'tue breakfast!A2:G',
+      'tue dinner!A2:G',
+      'wed breakfast!A2:G',
+      'wed dinner!A2:G',
+      'thur breakfast!A2:G',
+      'thur dinner!A2:G',
+      'fri breakfast!A2:G',
+      'fri dinner!A2:G',
+      'sat2 breakfast!A2:G'
     ]
   })
 }

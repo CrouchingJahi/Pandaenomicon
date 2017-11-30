@@ -6,6 +6,7 @@ import Attendance from '@/pages/Attendance'
 import ChoreChart from '@/pages/ChoreChart'
 import Events from '@/pages/Events'
 import Volunteers from '@/pages/Volunteers'
+import MealPlan from '@/pages/MealPlan'
 
 Vue.use(Router)
 
@@ -36,5 +37,10 @@ export default new Router({
       name: 'Volunteers',
       component: Volunteers
     },
+    {
+      path: '/mealplan',
+      name: 'Meal Plan',
+      component: MealPlan
+    }
   ]
 })

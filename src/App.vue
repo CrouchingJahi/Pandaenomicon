@@ -101,4 +101,7 @@ tr:nth-child(2n) {
 td {
   padding: 8px;
 }
+hr {
+  border-color: var(--color-main);
+}
 </style>

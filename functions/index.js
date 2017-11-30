@@ -69,7 +69,57 @@ function processMainSheet (sheet) {
 }
 
 function processMealSheet (sheet) {
-  let meals = {}
+  function getMeal (vals, mealNo) {
+    return {
+      chef: vals[0][0],
+      meal: vals[0][1],
+      count: sheet[0].values.reduce((c, row) => {
+        return c + (row.length < mealNo ? 0 : !!row[mealNo])
+      }, 0),
+      ingredients: vals.map(row => {
+        return {
+          name: row[2],
+          amountPer: row[3],
+          pricePer: row[4],
+          totalAmount: row[5],
+          totalPrice: row[6]
+        }
+      })
+    }
+  }
+
+  let meals = {
+    sat: {
+      dinner: getMeal(sheet[1].values, 4)
+    },
+    sun: {
+      breakfast: getMeal(sheet[2].values, 5),
+      dinner: getMeal(sheet[3].values, 6)
+    },
+    mon: {
+      breakfast: getMeal(sheet[4].values, 7),
+      dinner: getMeal(sheet[5].values, 8)
+    },
+    tue: {
+      breakfast: getMeal(sheet[6].values, 9),
+      dinner: getMeal(sheet[7].values, 10)
+    },
+    wed: {
+      breakfast: getMeal(sheet[8].values, 11),
+      dinner: getMeal(sheet[9].values, 12)
+    },
+    thur: {
+      breakfast: getMeal(sheet[10].values, 13),
+      dinner: getMeal(sheet[11].values, 14)
+    },
+    fri: {
+      breakfast: getMeal(sheet[12].values, 15),
+      dinner: getMeal(sheet[13].values, 16)
+    },
+    sat2: {
+      breakfast: getMeal(sheet[14].values, 17)
+    },
+  }
   return {
     meals
   }
