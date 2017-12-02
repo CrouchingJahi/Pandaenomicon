@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     lastUpdated: 'never',
     attendants: [],
-    chores: {},
+    chores: [],
     meals: {},
     events: {},
     volunteers: {}

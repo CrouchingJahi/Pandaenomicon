@@ -64,9 +64,6 @@ a {
   color: var(--color-main);
   text-decoration: none;
 }
-a:visited {
-  color: var(--color-dark);
-}
 a:hover {
   color: var(--color-gold);
   text-decoration: underline;
