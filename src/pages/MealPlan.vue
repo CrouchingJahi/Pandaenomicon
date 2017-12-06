@@ -28,13 +28,14 @@
       </ul>
       <hr />
       <div v-for="meal in mealList">
-        <h3>{{ meal.meal }}</h3>
+        <h3 class="day-marker">{{ meal.meal }}</h3>
         <span v-if="meal.chef">with Chef {{ meal.chef }}</span>
         <ul v-if="meal.ingredients.length">
           <li v-for="ingr in meal.ingredients">
             {{ ingr.name }}
           </li>
         </ul>
+        <hr/>
       </div>
     </div>
   </div>
@@ -47,22 +48,7 @@ export default {
       return this.$store.state.meals
     },
     mealList () {
-      return [
-        this.$store.state.meals.sat.dinner,
-        this.$store.state.meals.sun.breakfast,
-        this.$store.state.meals.sun.dinner,
-        this.$store.state.meals.mon.breakfast,
-        this.$store.state.meals.mon.dinner,
-        this.$store.state.meals.tue.breakfast,
-        this.$store.state.meals.tue.dinner,
-        this.$store.state.meals.wed.breakfast,
-        this.$store.state.meals.wed.dinner,
-        this.$store.state.meals.thur.breakfast,
-        this.$store.state.meals.thur.dinner,
-        this.$store.state.meals.fri.breakfast,
-        this.$store.state.meals.fri.dinner,
-        this.$store.state.meals.sat2.breakfast
-      ]
+      return this.$store.getters.mealList
     }
   }
 }

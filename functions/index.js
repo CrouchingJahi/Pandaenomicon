@@ -3,18 +3,16 @@ const functions = require('firebase-functions')
 const pull = require('./pull')
 
 function processMainSheet (sheet) {
+  const days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday 2']
   let menuSheet = sheet[1].values
+
   function getWeek (data) {
-    return [
-      data(1),
-      data(2),
-      data(3),
-      data(4),
-      data(5),
-      data(6),
-      data(7),
-      data(8)
-    ]
+    return [1, 2, 3, 4, 5, 6, 7, 8].map((dayNo) => {
+      return Object.assign(
+        { day: days[dayNo - 1] },
+        data(dayNo)
+      )
+    })
   }
   function getChores (col) {
     return {
@@ -69,14 +67,16 @@ function processMainSheet (sheet) {
 }
 
 function processMealSheet (sheet) {
+  const days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday 2']
   function getMeal (vals, mealNo) {
     return {
+      day: days[Math.ceil(mealNo / 2) - 2],
       chef: vals[0][0],
       meal: vals[0][1],
       count: sheet[0].values.reduce((c, row) => {
         return c + (row.length < mealNo ? 0 : !!row[mealNo])
       }, 0),
-      ingredients: vals.map(row => {
+      ingredients: vals.filter(row => !!row[2]).map(row => {
         return {
           name: row[2],
           amountPer: row[3],

@@ -23,7 +23,23 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    goingAttendants: state => state.attendants.filter(p => !!p.arrival)
+    goingAttendants: state => state.attendants.filter(p => !!p.arrival),
+    mealList: state => !state.meals.sat ? [] : [
+      state.meals.sat.dinner,
+      state.meals.sun.breakfast,
+      state.meals.sun.dinner,
+      state.meals.mon.breakfast,
+      state.meals.mon.dinner,
+      state.meals.tue.breakfast,
+      state.meals.tue.dinner,
+      state.meals.wed.breakfast,
+      state.meals.wed.dinner,
+      state.meals.thur.breakfast,
+      state.meals.thur.dinner,
+      state.meals.fri.breakfast,
+      state.meals.fri.dinner,
+      state.meals.sat2.breakfast
+    ]
   },
   actions: {
     pullData ({ commit }) {

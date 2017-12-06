@@ -7,6 +7,7 @@ import ChoreChart from '@/pages/ChoreChart'
 import Events from '@/pages/Events'
 import Volunteers from '@/pages/Volunteers'
 import MealPlan from '@/pages/MealPlan'
+import ShoppingPlan from '@/pages/ShoppingPlan'
 import Stats from '@/pages/Stats'
 
 Vue.use(Router)
@@ -45,6 +46,12 @@ export const routes = [
     path: '/mealplan',
     name: 'Meal Plan',
     component: MealPlan,
+    homeLink: true
+  },
+  {
+    path: '/shopplan',
+    name: 'Shopping Plan',
+    component: ShoppingPlan,
     homeLink: true
   },
   {
