@@ -129,7 +129,8 @@ function pullData(req, res) {
   let config = functions.config().gapis
   Promise.all([pull.mainData(config),pull.mealData(config)]).then(([mainSheet, mealSheet]) => {
     let data = {
-      lastUpdated: new Date()
+      lastUpdated: new Date(),
+      apiVersion: require('./package.json').version
     }
     Object.assign(data, processMainSheet(mainSheet), processMealSheet(mealSheet))
     res.send(data)
